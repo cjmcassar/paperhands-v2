@@ -5,13 +5,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: { fontFamily: { roboto: "Roboto", inter: "Inter" } },
+    extend: { fontFamily: { roboto: "font-mono", inter: "Inter" } },
     colors: {
       gray: {
-        "100": "#a7adb9",
-        "200": "#a3a3a3",
-        "300": "#2b303b",
-        "400": "#1a1d23",
+        100: "#a7adb9",
+        200: "#a3a3a3",
+        300: "#2b303b",
+        400: "#1a1d23",
       },
     },
     fontSize: {
