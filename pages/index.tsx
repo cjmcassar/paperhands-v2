@@ -16,6 +16,46 @@ const Desktop1: NextPage = () => {
   // use SWR to fetch data from coingecko API
   const { data, error } = useSWR(url, fetcher);
 
+  if (data) {
+    console.log(data);
+  } else {
+    console.log(error);
+  }
+
+  const { db, auth } = initializeFirebaseClient();
+
+  async function signIn() {
+    const payload = await sdk?.auth.login("paperhands.app");
+
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ payload }),
+    });
+
+    const { token } = await res.json();
+
+    signInWithCustomToken(auth, token).then((userCredential) => {
+      const user = userCredential.user;
+
+      const usersRef = doc(db, "users", user.uid!);
+      
+      if (!usersRef) {
+        // user now exists in Firestore database
+        setDoc(
+          usersRef,
+          {
+            address: address,
+            createdAt: serverTimestamp(),
+          },
+          { merge: true }
+        );
+      }
+      //consolelog error
+    });
+  }
+
+
   return (
     <nav className="relative [background:linear-gradient(180deg,_#2b303b,_rgba(43,_48,_59,_0))] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] w-full overflow-hidden  lg:px-6 py-2.5">
       <div className="flex flex-wrap justify-around items-center mx-auto max-w-screen-xl">
