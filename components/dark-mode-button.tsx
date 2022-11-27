@@ -3,11 +3,11 @@ import type { NextPage } from "next";
 const DarkModeButton: NextPage = () => {
   return (
     <button
-      className="cursor-pointer [border:none] p-[0] bg-[transparent] absolute top-[39px] left-[1032px] w-[28px] h-[28px] lg:active:animate-[1s_ease_0s_1_normal_none_jello-horizontal] lg:active:opacity-[1]"
+      className="cursor-pointer [border:none]  bg-[transparent] absolute w-[28px] h-[28px] lg:active:animate-[1s_ease_0s_1_normal_none_jello-horizontal] lg:active:opacity-[1]"
       autoFocus
     >
       <img
-        className="absolute top-[1px] left-[1px] w-[26px] h-[26px] overflow-hidden"
+        className="top-[1px] left-[1px] w-[26px] h-[26px] "
         alt=""
         src="../akariconssunfill.svg"
       />
