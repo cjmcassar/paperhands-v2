@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Logo from "../components/logo";
 import Auth from "../components/auth";
-import DarkModeButton from "../components/dark-mode-button";
 import App from "../components/app";
 import React from "react";
 import useSWR from "swr";
+import { ConnectWallet } from "@thirdweb-dev/react";
 
 const fetcher = (url: RequestInfo | URL) =>
   fetch(url).then((res) => res.json());
@@ -24,6 +24,7 @@ const Desktop1: NextPage = () => {
         </div>
         <div className="flex items-center">
           <Auth />
+          <ConnectWallet />
         </div>
       </div>
 
