@@ -3,11 +3,18 @@ import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 
 import "./global.css";
 
-const activeChainId = ChainId.Mainnet;
+const activeChainId = ChainId.Goerli;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider desiredChainId={activeChainId}>
+    <ThirdwebProvider
+      desiredChainId={activeChainId}
+      authConfig={{
+        domain: "paperhands.app",
+        authUrl: "/api/auth",
+        loginRedirect: "/",
+      }}
+    >
       <Component {...pageProps} />;
     </ThirdwebProvider>
   );
