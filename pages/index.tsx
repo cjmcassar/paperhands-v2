@@ -46,7 +46,6 @@ const Desktop1: NextPage = () => {
 
       const usersRef = doc(db, "users", user.uid!);
 
-      //bug happens here
       if (!usersRef) {
         // user now exists in Firestore database
         setDoc(
