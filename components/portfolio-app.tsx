@@ -6,7 +6,7 @@ import LiquidateAllButton from "../components/liquidate-all-button";
 import AddressInfo from "../components/address-info";
 import LineChart from "../components/line-chart";
 
-const App: NextPage = () => {
+const PortfolioApp: NextPage = () => {
   return (
     <div className="absolute rounded-[14px] w-[635px] h-[712px] text-left text-base text-gray-100 font-inter">
       <AppContainer />
@@ -22,4 +22,4 @@ const App: NextPage = () => {
   );
 };
 
-export default App;
+export default PortfolioApp;
