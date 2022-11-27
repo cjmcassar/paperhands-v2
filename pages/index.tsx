@@ -5,7 +5,7 @@ import Auth from "../components/auth";
 import PorfolioApp from "../components/portfolio-app";
 import useSWR from "swr";
 import { ConnectWallet, useAddress, useSDK } from "@thirdweb-dev/react";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { doc, serverTimestamp, setDoc, getDoc } from "firebase/firestore";
 import { signInWithCustomToken } from "firebase/auth";
 import initializeFirebaseClient from "../lib/initFirebase";
 
@@ -42,23 +42,19 @@ const Desktop1: NextPage = () => {
 
     const { token } = await res.json();
 
-    signInWithCustomToken(auth, token).then((userCredential) => {
+    signInWithCustomToken(auth, token).then(async (userCredential) => {
       const user = userCredential.user;
 
       const usersRef = doc(db, "users", user.uid!);
-
-      if (!usersRef) {
-        // user now exists in Firestore database
-        setDoc(
-          usersRef,
-          {
-            address: address,
-            createdAt: serverTimestamp(),
-          },
-          { merge: true }
-        );
-      }
-      //consolelog error
+      getDoc(usersRef).then((doc) => {
+        if (!doc.exists()) {
+          setDoc(
+            usersRef,
+            { createdAt: serverTimestamp(), address: address },
+            { merge: true }
+          );
+        }
+      });
     });
   }
 
