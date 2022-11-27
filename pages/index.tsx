@@ -39,7 +39,7 @@ const Desktop1: NextPage = () => {
       const user = userCredential.user;
 
       const usersRef = doc(db, "users", user.uid!);
-      
+
       if (!usersRef) {
         // user now exists in Firestore database
         setDoc(
