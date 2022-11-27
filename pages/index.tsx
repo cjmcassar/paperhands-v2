@@ -23,7 +23,7 @@ const Desktop1: NextPage = () => {
           <Logo />
         </div>
         <div className="flex items-center">
-          <Auth />
+          {/* <Auth /> */}
           <ConnectWallet />
         </div>
       </div>
