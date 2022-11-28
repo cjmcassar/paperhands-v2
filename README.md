@@ -1,1 +1,0 @@
-# paperhands-v2
